@@ -1,0 +1,10 @@
+language: csharp
+solution: ./CITest/TestAppsrc/TestApp.sln
+
+install:
+  - sudo apt-get install nunit-console
+  - nuget restore ./CITest/TestApp/TestApp.sln
+
+script:
+  - xbuild ./CITest/TestAppsrc/TestApp.sln
+  - nunit-console ./CITest/TestApp/UnitTests/bin/Debug/UnitTests.dll
